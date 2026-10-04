@@ -1,0 +1,6 @@
+jira
+langchain-ollama
+numpy
+python-dotenv
+pytest
+PyGithub
