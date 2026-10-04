@@ -67,6 +67,13 @@ Rules:
   exception type available (e.g. a custom exception class already defined
   elsewhere in the file or module) — never a bare `except:` or
   `except Exception`, which would silently swallow unrelated bugs too.
+- Do NOT invent new business rules, thresholds, special cases, or
+  validation that the ticket never asked for. Fix only the specific defect
+  described — nothing more.
+- If a comment in the current code explains why a value only happens to
+  work "by coincidence" or "in this specific case", that comment is
+  describing the BUG itself, not a rule to preserve or build a condition
+  around.
 
 Ticket: {parsed_ticket['key']} — {parsed_ticket['summary']}
 Description:

@@ -32,6 +32,7 @@ from jira import JIRA
 
 from agent1_parser import parse_ticket
 from agent2_scanner import scan_codebase
+from agent3_fix_generator import show_diff
 from agent4_validator import validate_with_retries
 from agent5_approval import run_agent5
 
@@ -82,6 +83,10 @@ def process_ticket(ticket_key: str) -> None:
 
     if not result["success"]:
         print(f"No passing fix found for {ticket_key} after {result['attempts']} attempts.")
+        if result.get("fix"):
+            print("\n=== Last attempted fix (diff) ===")
+            print(show_diff(result["fix"]["original_code"], result["fix"]["fixed_code"]))
+        print("\n=== Last test output ===")
         print(result["test_output"])
         return
 

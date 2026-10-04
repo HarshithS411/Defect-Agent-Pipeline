@@ -250,6 +250,10 @@ if __name__ == "__main__":
 
     if not result["success"]:
         print(f"\n❌ No passing fix found after {result['attempts']} attempts — nothing to approve.")
+        if result.get("fix"):
+            print("\n=== Last attempted fix (diff) ===")
+            print(show_diff(result["fix"]["original_code"], result["fix"]["fixed_code"]))
+        print("\n=== Last test output ===")
         print(result["test_output"])
         sys.exit(1)
 
